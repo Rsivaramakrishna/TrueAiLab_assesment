@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAI RAG Chat Assistant</title>
+    <!-- Simple System Font CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome for basic icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="simple-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>GenAI RAG Assistant</h1>
+            <p class="subtitle">Retrieval-Augmented Generation Chatbot with SQLite Vector Store & JWT Auth</p>
+        </header>
+
+        <!-- Auth Status Bar -->
+        <div class="auth-bar">
+            <div id="auth-status-logged-out">
+                <span class="status-badge offline">Logged Out</span>
+                <input type="text" id="auth-username" placeholder="Username">
+                <input type="password" id="auth-password" placeholder="Password">
+                <button onclick="handleLogin()" class="btn-sm">Login</button>
+                <button onclick="handleRegister()" class="btn-sm">Register</button>
+                <button onclick="autoRegisterGuest()" class="btn-sm btn-accent">Quick Guest Start</button>
+            </div>
+            <div id="auth-status-logged-in" class="hidden">
+                <span class="status-badge online">Logged In</span>
+                <span>User: <strong id="current-user-name">Guest</strong></span>
+                <span class="separator">|</span>
+                <span>Session: <code id="display-session-id">None</code></span>
+                <button onclick="createNewSession()" class="btn-sm">New Session</button>
+                <button onclick="clearCurrentChat()" class="btn-sm">Clear History</button>
+                <button onclick="handleLogout()" class="btn-sm btn-danger">Logout</button>
+            </div>
+        </div>
+
+        <!-- System Controls (Reindexing & Docs Viewer) -->
+        <div class="controls-bar">
+            <span>System Status: <strong id="health-text">Checking...</strong></span>
+            <span class="separator">|</span>
+            <button onclick="reindexDefaultDocs()" class="btn-link"><i class="fa-solid fa-sync"></i> Reindex docs.json</button>
+            <button onclick="toggleDocViewer()" class="btn-link"><i class="fa-solid fa-database"></i> View Knowledge Base Docs</button>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="chat-container">
+            <div class="messages-window" id="messages-container">
+                <div class="system-message" id="welcome-box">
+                    <p><strong>System Note:</strong> Please log in or click <strong>"Quick Guest Start"</strong> to initialize a JWT token session.</p>
+                    <p>Once authenticated, the assistant will answer questions using cosine similarity retrieval from <code>docs.json</code>. If a question is out of scope (similarity score falls below the 0.35 threshold), a safe grounding fallback is returned.</p>
+                    <p class="suggestions-title"><strong>Sample Queries to Try:</strong></p>
+                    <ul class="suggestions-list">
+                        <li><a href="#" onclick="useSuggestedQuery('How can I reset my password?')">How do I reset my password?</a></li>
+                        <li><a href="#" onclick="useSuggestedQuery('What is the guest Wi-Fi SSID and password?')">What is the guest Wi-Fi credentials?</a></li>
+                        <li><a href="#" onclick="useSuggestedQuery('What is the remote work policy?')">How does hybrid remote work operate?</a></li>
+                        <li><a href="#" onclick="useSuggestedQuery('What is the refund policy?')">How many days do I have to request a billing refund?</a></li>
+                        <li><a href="#" onclick="useSuggestedQuery('Who is the president of the United States?')">Who is the president of the US? (Trigger Grounding Fallback)</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="typing-indicator" class="typing-indicator hidden">
+                <i class="fa-solid fa-spinner fa-spin"></i> Retrieving context and generating grounded answer...
+            </div>
+            
+            <!-- Message Input form -->
+            <form id="chat-form" onsubmit="handleSendMessage(event)" class="input-form">
+                <input type="text" id="chat-input" placeholder="Please log in first..." disabled required autocomplete="off">
+                <button type="submit" id="chat-send-btn" disabled>Send</button>
+            </form>
+        </div>
+
+        <!-- RAG Analytics & Similarity Scores -->
+        <div id="similarity-panel" class="analytics-container hidden">
+            <h3>RAG Diagnostics</h3>
+            <div class="metrics-grid">
+                <div>Chunks Match: <strong id="metric-chunks">0</strong></div>
+                <div>Tokens Used: <strong id="metric-tokens">0</strong></div>
+                <div>LLM Model: <span id="metric-model" class="code-font">None</span></div>
+            </div>
+            <div class="scores-list">
+                <p class="scores-lbl">Cosine Similarity Scores:</p>
+                <ul id="sim-bars-container">
+                    <!-- Text scores list here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simple Document Viewer overlay -->
+    <div id="doc-viewer-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Knowledge Base Documents</h2>
+                <button onclick="toggleDocViewer()" class="btn-sm">Close</button>
+            </div>
+            <div id="doc-list-container" class="doc-list-body">
+                <!-- Chunks listed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <span id="toast-message">Notification</span>
+    </div>
+
+    <!-- Main script -->
+    <script src="app.js"></script>
+</body>
+</html>

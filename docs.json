@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Reset Password Policy",
+    "content": "Users can reset their password from Settings > Security. Passwords must be at least 12 characters long and contain a mix of uppercase letters, lowercase letters, numbers, and special characters. Password resets are forced every 90 days for security compliance. If you are locked out, contact the IT helpdesk at ext. 4357."
+  },
+  {
+    "title": "Account Deletion Policy",
+    "content": "Users can delete their account from Account Settings > Manage Profile > Delete Account. Upon deletion, all user data, files, and chat logs are permanently erased from our databases after a 30-day grace period. During this grace period, accounts can be restored by logging in and selecting 'Cancel Deletion'."
+  },
+  {
+    "title": "Refund and Billing Policy",
+    "content": "StellarTech Solutions offers a 14-day money-back guarantee for all subscription plans. Refund requests must be submitted via the Billing Portal under 'Subscription Details > Request Refund' or emailed to billing@stellartech.com. Approved refunds take 5-7 business days to process back to the original payment method."
+  },
+  {
+    "title": "Working Hours and Remote Work Policy",
+    "content": "Core working hours at StellarTech Solutions are 10:00 AM to 4:00 PM EST, during which all team members must be reachable. The company supports a hybrid remote work model allowing employees to work from home up to 3 days per week. Remote work arrangements must be approved by department heads and logged in the HR portal."
+  },
+  {
+    "title": "IT Support Escalation Tiers",
+    "content": "StellarTech Solutions IT Support is structured in three tiers. Tier 1 handles general inquiries, password resets, and software installations. Tier 2 handles network connectivity problems and hardware failures. Tier 3 handles server outages, database corruption, and security incidents. Escalation times are 1 hour for Tier 1 to Tier 2, and 4 hours for Tier 2 to Tier 3."
+  },
+  {
+    "title": "Guest Wi-Fi Access Code",
+    "content": "The StellarTech Guest Wi-Fi SSID is 'Stellar-Guest'. The access code changes on the 1st of every month and is posted on the digital boards in the lobby and kitchen. For the current month, the guest Wi-Fi password is 'StellarConnect2026!'. Guest access is limited to standard web browsing and restricted from accessing internal servers."
+  },
+  {
+    "title": "Expense Reimbursement Guidelines",
+    "content": "Employees must submit expense reimbursement claims within 30 days of the purchase date. All claims must be logged in the Expensify portal with valid receipts attached. Business meals are reimbursed up to $50 per person. Travel mileage is reimbursed at $0.67 per mile. Expenses exceeding $500 require prior written approval from the finance department."
+  },
+  {
+    "title": "Employee Code of Conduct",
+    "content": "StellarTech Solutions is committed to providing a safe, inclusive, and professional work environment. Discrimination, harassment, and bullying of any form are strictly prohibited. Employees must safeguard confidential company information and intellectual property. Violations of the code of conduct will lead to disciplinary actions, up to and including immediate termination."
+  }
+]
