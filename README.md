@@ -16,7 +16,7 @@ graph TD
     API <--> |Auth / Session Info| DB[(SQLite Database)]
     API <--> |Embeddings| LocalEmbeddings[SentenceTransformers: all-MiniLM-L6-v2]
     API <--> |LLM Call| LLMApi[Gemini 3.5 Flash API]
-
+```
 
 RAG Sequence diagram
 
