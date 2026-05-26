@@ -21,6 +21,7 @@ graph TD
 RAG Sequence diagram
 
 <img width="826" height="861" alt="Screenshot 2026-05-26 145627" src="https://github.com/user-attachments/assets/bb168eb8-e3b4-49ab-8512-40eb845302fb" />
+
 A. Document Chunking & Parsing
 Initial Knowledge Base: Configured with 8 structured corporate documents in docs.json (covering Password resets, Wi-Fi credentials, refund policies, remote work, etc.).
 Chunking Logic: Implemented an overlapping sliding window word-based chunker. It splits documents into chunks of 250 words with an overlap of 50 words (~300-350 tokens per chunk). The overlap ensures semantic concepts aren't severed at boundaries.
@@ -80,7 +81,7 @@ pip install -r requirements.txt
 Copy .env.example to .env and fill in your Gemini API key:
 
 env
-
+```
 LLM_PROVIDER=gemini
 GEMINI_API_KEY=your_actual_gemini_api_key_here
 EMBEDDING_PROVIDER=local
@@ -88,14 +89,14 @@ SIMILARITY_THRESHOLD=0.35
 TOP_K=3
 JWT_SECRET=stellar_tech_jwt_secret_key_1234567890
 DATABASE_URL=sqlite:///./rag_assistant.db
-
+```
 . Start the Server
 Run the FastAPI application locally:
 
 bash
-
+```
 uvicorn app.main:app --host 127.0.0.1 --port 8000
-
+```
 4. How to Test
 Click "Quick Guest Start" to automatically register, sign a JWT, and log in.
 Try asking in-scope queries:
