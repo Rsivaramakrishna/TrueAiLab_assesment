@@ -1,3 +1,12 @@
+# Demo Video
+
+
+
+https://github.com/user-attachments/assets/275f3247-a6e2-4ac6-9dcc-6a9a209c784a
+
+
+
+
 # TrueAiLab_assesment
 Production-Grade GenAI RAG Assistant
 # GenAI RAG Chat Assistant
